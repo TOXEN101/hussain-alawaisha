@@ -1,141 +1,105 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
+.book-slider {
+  max-width: 1100px;
+  /* margin: 80px auto; */
+  position: relative;
+  background: var(--green-dark) ;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
 
-  --text-primary: #000;
-  --text-secondary: #666;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
+.book-slide,
+.article-slide {
+  animation: fadeIn 0.6s ease-in-out;
+}
 
-  display: flex;
-  min-height: 100vh;
+.book-slide {
+  display: none;
   align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  gap: 40px;
+  padding: 40px;
 }
 
-.main {
+.book-slide.active {
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+.book-slide img {
+  width: 320px;
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.book-details {
+  flex: 1;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.book-details h3 {
+  color: var(--green-dark);
+  font-size: 2em;
+  margin-bottom: 15px;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.book-details p {
+  font-size: 1.2em;
+  line-height: 1.9;
+  margin-bottom: 25px;
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+.book-details a {
+  background: var(--green-main);
+  color: var(--white);
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
+.book-details a:hover {
+  background: var(--green-dark);
+}
+
+/* الأسهم */
+.slider-arrow {
+  position: absolute;
+  /* top: 50%; */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  /* transform: translateY(-50%); */
+  background-color: #8b6718;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  z-index: 10;
+  transition: background-color 0.3s ease;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.slider-arrow:hover {
+  background-color: #733007;
+  /* transform: scale(1.1); */
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.arrow-left {
+  right: 15px;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.arrow-right {
+  left: 15px;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
-}
