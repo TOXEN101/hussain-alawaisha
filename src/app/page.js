@@ -20,8 +20,8 @@ export default function Home() {
         </p>
       </div>
       <BookSlider></BookSlider>
-      <Slider title={"أحدث المقالات"} items={articles}></Slider>
-      <Slider title={"أحدث الفتاوى"} items={fatawas}></Slider>
+      <Slider title={"أحدث المقالات"} items={articles} pageLink={"articles"}></Slider>
+      <Slider title={"أحدث الفتاوى"} items={fatawas} pageLink={"fatawas"}></Slider>
     </>
   );
 }

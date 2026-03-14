@@ -719,6 +719,10 @@ footer {
   .book-card img {
     height: 260px;
   }
+  .book-details p{
+    max-height: 70px;
+    overflow: scroll;
+  }
   .book-slider {
     padding: 20px;
   }

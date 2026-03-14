@@ -2,10 +2,9 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function Slider({ title, items }) {
+export default function Slider({ title, items, pageLink }) {
   const [activeSlide, setActiveSlide] = useState(items.length - 3);
   function prevSlide() {
-    console.log(activeSlide)
     let newActive = activeSlide;
     if (newActive == items.length - 3) setActiveSlide(items.length - 1);
     else setActiveSlide(newActive - 1);
@@ -15,6 +14,8 @@ export default function Slider({ title, items }) {
     if (newActive == items.length - 1) setActiveSlide(items.length - 3);
     else setActiveSlide(newActive + 1);
   }
+  console.log(pageLink)
+const readSlideBtnTxt= pageLink=="fatawas"?"اقرأ الفتوى":"اقرأ المقال"
   const itemsList = items.slice(-3).map((item) => {
     // console.log(item.id)
     return (
@@ -25,8 +26,10 @@ export default function Slider({ title, items }) {
         <div className="article-detail book-detail">
           <h3>{item.title}</h3>
           <p>{item.brief}</p>
-          <Link href={`/articles/${item.id}`} className="download-btn">
-            اقرأ المقال
+          <Link href={`/${pageLink}/${item.id}`} className="download-btn">
+          {
+            readSlideBtnTxt
+          }
           </Link>
         </div>
       </div>
